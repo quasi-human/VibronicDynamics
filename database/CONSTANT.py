@@ -7,3 +7,4 @@ SI2AU_TIME = 4.134137457575e16 # (time in a.u./s)
 SI2AU_ENERGY = 2.2937126583579e17 # (energy in a.u./ J)
 WVN2AU = SI2AU_TIME**(-1) * SPEED_OF_LIGHT * 100 * 2 * np.pi
 KB = SI2AU_ENERGY * 1.380e-23 # Boltzman constant
+MILLI_EV2AU = 3.674932248e-5 # constant (mili eV to au unit)
