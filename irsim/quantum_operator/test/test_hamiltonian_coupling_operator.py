@@ -91,9 +91,7 @@ class TestHamiltonianCouplingOperator(unittest.TestCase):
         HamiltonianCouplingOperator.set_coupling_constant(DIC_COUP_CONST)
 
         # set coupling constant dictionary
-        path = os.path.join(ROOTPATH, 'irsim', 'database', 'HIRmat.pickle')
-        with open(path, 'rb') as f:
-            DIC_COUP_MTRX = pickle.load(f)
+        from irsim.database.COUPLING_MATRIX import DIC_COUPLING_MATRIX as DIC_COUP_MTRX
         HamiltonianCouplingOperator.set_coupling_matrix(DIC_COUP_MTRX)
 
         # set reduced matrix element dictionary
