@@ -98,16 +98,14 @@ class TestMatrixRepresentation(unittest.TestCase):
         # set coupling constant data to HamiltonianCouplingOperator
         H_coupling.set_coupling_constant(DIC_COUP_CONST)
 
-        # fetch coupling matrix data
-        path = os.path.join(ROOTPATH, 'irsim', 'database', 'HIRmat.pickle')
-        with open(path, 'rb') as f:
-            DIC_COUP_MTRX = pickle.load(f)
+        from irsim.database.COUPLING_MATRIX import DIC_COUPLING_MATRIX as DIC_COUP_MTRX
 
         # set coupling constant dictionary to HamiltonianCouplingOperator
         H_coupling.set_coupling_matrix(DIC_COUP_MTRX)
 
         # set reduced matrix element dictionary to HamiltonianCouplingOperator
         from irsim.database import DIC_REDUCED_MATRIX_ELEMENT as DIC_RME
+
         H_coupling.set_reduced_matrix_element(DIC_RME)
 
         # instantiation
