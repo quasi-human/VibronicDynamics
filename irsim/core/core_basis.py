@@ -127,6 +127,10 @@ class ProductKet(Ket):
 
         return cp_productket
 
+    def show(self):
+        for i, ket in enumerate(self, 1):
+            print(i) 
+            ket.show() # recursive
 
 class Bases(ProductKet):
     '''Bases are flock of basis (ket or product kets).'''
@@ -150,6 +154,7 @@ class Bases(ProductKet):
                 print('"{}" filter function is not registered.'.format(label))
         
     def __init__(self, *iterKets):
+        super().__init__()
         # hash table for searching index of specific ket
         self.dicKet = OrderedDict()
         self.dicIndex = {} # dic qval <-> index of ket
@@ -243,12 +248,18 @@ class Bases(ProductKet):
     def __len__(self):
         return self.N
 
+    def show(self):
+        for i, ket in enumerate(self, 1):
+            print('Product Ket:', i) 
+            ket.show() # recursive
+
 
 def show_ket(ket_or_iterKet):
-    if isinstance(ket_or_iterKet, Ket):
-        ket = ket_or_iterKet
-        ket.show()
-    else:
+    #if isinstance(ket_or_iterKet, Ket):
+    if ket_or_iterKet.QUANTUM_TYPE in ('QuantumProductKet', 'QuantumBases'):
         for i, ket in enumerate(ket_or_iterKet, 1):
             print(i) 
             show_ket(ket) # recursive
+    else:
+        ket = ket_or_iterKet
+        ket.show()
